@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikacja Wyścigowa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- PANEL PRZYCISKÓW -->
+    <div id="buttonsContainer">
+        <div id="primaryButtons">
+		    <button class="rectangle" id="startButton" onclick="startRace()">
+                <img src="images/Start Race.png" alt="Start Race">
+            </button>
+            <button class="rectangle" onclick="resetRace()">
+                <img src="images/Restart Race.png" alt="Restart Race">
+            </button>
+            <div id="backgroundButtonContainer">
+                <button class="rectangle" id="changeBackgroundButton" onclick="changeBackground()">
+                    <img src="images/Zmien Tlo.png" alt="Zmien Tlo">
+                </button>
+            </div>
+        </div>
+
+        <div id="secondaryButtons">
+            <button class="circle" onclick="changeSpeed(4)">
+                <img src="images/4x.png" alt="4x">
+            </button>
+            <button class="circle" onclick="changeSpeed(2)">
+                <img src="images/2x.png" alt="2x">
+            </button>
+            <button class="circle" onclick="changeSpeed(1)">
+                <img src="images/Normal_time.png" alt="Normal Time">
+            </button>
+            <button class="circle" onclick="changeSpeed(0.5)">
+                <img src="images/0.5x.png" alt="0.5x">
+            </button>
+            <button class="circle" onclick="changeSpeed(0.25)">
+                <img src="images/0.25x.png" alt="0.25x">
+            </button>
+        </div>
+    </div>
+
+    <!-- PANEL WYNIKÓW -->
+    <div id="raceContainer">
+        <div id="leaderboard">
+            <img src="images/TB.png" alt="Tabela Wyników" style="width: 100%; max-width: 600px; height: 50px; margin-bottom: 10px; border-radius:20%;">
+            
+            <table id="leaderboardTable">
+                <thead>
+                    <tr>
+                        <th>Miejsce</th>
+                        <th>Kierowca</th>
+                        <th>Gap(+/-)</th>
+                        <th>Dystans (km)</th>
+                        <th>LAP</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <!-- Wypełniane dynamicznie -->
+                </tbody>
+            </table>
+
+            <div id="lapInfoContainer">
+                <table id="lapInfoTable">
+                    <thead>
+                        <tr>
+                            <th>Kierowca</th>
+                            <th>Najszybsze Okrążenie (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fastestLapsBody">
+                        <!-- Wypełniane dynamicznie -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOR WYŚCIGOWY I SAMOCHODY -->
+    <div id="granicatoru">
+        <div id="track">
+            <div id="timerDisplay">Czas Wyścigu: 0.000 s</div>
+            <div id="winnerDisplay"></div>
+
+            <!-- SAMOCHODY -->
+            <!-- 30 samochodów w 3 rzędach -->
+            <!-- Rząd 1 -->
+            <img class="car" id="car1" src="car/car1.png" alt="Samochód 1">
+            <img class="car" id="car2" src="car/car2.png" alt="Samochód 2">
+            <img class="car" id="car3" src="car/car3.png" alt="Samochód 3">
+            <img class="car" id="car4" src="car/car4.png" alt="Samochód 4">
+            <img class="car" id="car5" src="car/car5.png" alt="Samochód 5">
+            <img class="car" id="car6" src="car/car6.png" alt="Samochód 6">
+            <img class="car" id="car7" src="car/car7.png" alt="Samochód 7">
+            <img class="car" id="car8" src="car/car8.png" alt="Samochód 8">
+            <img class="car" id="car9" src="car/car9.png" alt="Samochód 9">
+            <img class="car" id="car10" src="car/car10.png" alt="Samochód 10">
+
+            <!-- Rząd 2 -->
+            <img class="car" id="car11" src="car/car11.png" alt="Samochód 11">
+            <img class="car" id="car12" src="car/car12.png" alt="Samochód 12">
+            <img class="car" id="car13" src="car/car13.png" alt="Samochód 13">
+            <img class="car" id="car14" src="car/car14.png" alt="Samochód 14">
+            <img class="car" id="car15" src="car/car15.png" alt="Samochód 15">
+            <img class="car" id="car16" src="car/car16.png" alt="Samochód 16">
+            <img class="car" id="car17" src="car/car17.png" alt="Samochód 17">
+            <img class="car" id="car18" src="car/car18.png" alt="Samochód 18">
+            <img class="car" id="car19" src="car/car19.png" alt="Samochód 19">
+            <img class="car" id="car20" src="car/car20.png" alt="Samochód 20">
+
+            <!-- Rząd 3 -->
+            <img class="car" id="car21" src="car/car21.png" alt="Samochód 21">
+            <img class="car" id="car22" src="car/car22.png" alt="Samochód 22">
+            <img class="car" id="car23" src="car/car23.png" alt="Samochód 23">
+            <img class="car" id="car24" src="car/car24.png" alt="Samochód 24">
+            <img class="car" id="car25" src="car/car25.png" alt="Samochód 25">
+            <img class="car" id="car26" src="car/car26.png" alt="Samochód 26">
+            <img class="car" id="car27" src="car/car27.png" alt="Samochód 27">
+            <img class="car" id="car28" src="car/car28.png" alt="Samochód 28">
+            <img class="car" id="car29" src="car/car29.png" alt="Samochód 29">
+            <img class="car" id="car30" src="car/car30.png" alt="Samochód 30">
+        </div>
+    </div>
+
+    <!-- SKRYPT -->
+    <script src="script.js"></script>
+</body>
+</html>

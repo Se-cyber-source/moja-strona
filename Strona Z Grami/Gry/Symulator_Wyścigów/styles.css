@@ -1,0 +1,233 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    height: 100vh;
+    background-image: url("car/obr.bmp");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#raceContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#leaderboard {
+    position: absolute;
+    top: 10px;
+    left: -630px;
+    width: 290px;
+    border: 1px solid #000;
+    padding: 10px;
+    background-color: rgba(119, 136, 153, 0.8);
+    z-index: 10;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+}
+
+#track {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    border: 5px solid #333;
+    margin: auto;
+    border-radius: 2%;
+	left: 0px;
+	top: 0px;
+}
+
+#granicatoru {
+    width: 700px;
+    height: 500px;
+    border: 5px solid #000;
+    display: flex;
+    position: relative;
+    margin: auto;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 128, 0, 0.5);
+    border-radius: 2%;
+	left: 50px;
+	top: 300px;
+}
+
+.car {
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    position: absolute;
+    border: 1px solid #000;
+    z-index: 2;
+    transition: all 0.1s ease;
+}
+
+#car1 { top: 70px; left: 90px; }
+#car2 { top: 70px; left: 135px; }
+#car3 { top: 70px; left: 180px; }
+#car4 { top: 70px; left: 225px; }
+#car5 { top: 70px; left: 270px; }
+#car6 { top: 70px; left: 315px; }
+#car7 { top: 70px; left: 360px; }
+#car8 { top: 70px; left: 405px; }
+#car9 { top: 70px; left: 450px; }
+#car10 { top: 70px; left: 495px; }
+
+#car11 { top: 115px; left: 90px; }
+#car12 { top: 115px; left: 135px; }
+#car13 { top: 115px; left: 180px; }
+#car14 { top: 115px; left: 225px; }
+#car15 { top: 115px; left: 270px; }
+#car16 { top: 115px; left: 315px; }
+#car17 { top: 115px; left: 360px; }
+#car18 { top: 115px; left: 405px; }
+#car19 { top: 115px; left: 450px; }
+#car20 { top: 115px; left: 495px; }
+
+#car21 { top: 160px; left: 90px; }
+#car22 { top: 160px; left: 135px; }
+#car23 { top: 160px; left: 180px; }
+#car24 { top: 160px; left: 225px; }
+#car25 { top: 160px; left: 270px; }
+#car26 { top: 160px; left: 315px; }
+#car27 { top: 160px; left: 360px; }
+#car28 { top: 160px; left: 405px; }
+#car29 { top: 160px; left: 450px; }
+#car30 { top: 160px; left: 495px; }
+
+#timerDisplay {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    transition: color 0.5s ease;
+}
+
+#winnerDisplay {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    transition: color 0.5s ease;
+}
+
+#buttonsContainer {
+    position: absolute;
+    top: 10px;
+    right: 610px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+button img {
+    width: 100px;
+    height: 50px;
+}
+
+button:hover img {
+    opacity: 0.8;
+}
+
+.circle {
+    padding: 10px;
+    background-color: #FFFFFF;
+    color: white;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    width: 37.1px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle:hover {
+    background-color: #007bb5;
+}
+
+#primaryButtons {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+}
+
+#secondaryButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#leaderboardTable {
+    width: 100%;
+	font-size: 12px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#leaderboardTable th, #leaderboardTable td {
+    border: 2px solid #000;
+    padding: 3px;
+}
+
+#leaderboardTable th {
+    background-color: rgba(0, 128, 0, 0.8);
+    font-weight: bold;
+}
+
+.first-place {
+    background-color: gold; /* Złoty kolor dla 1. miejsca */
+}
+
+.second-place {
+    background-color: silver; /* Srebrny kolor dla 2. miejsca */
+}
+
+.third-place {
+    background-color: #cd7f32; /* Brązowy kolor dla 3. miejsca */
+}
+
+.default-place {
+    background-color: lightgray; /* Szary kolor dla pozostałych miejsc */
+}
+
+#lapInfoContainer {
+    width: 100%;
+    max-width: 600px;
+}
+
+#lapInfoTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 3px;
+}
+
+#lapInfoTable th, #lapInfoTable td {
+    padding: 4px;
+    border: 2px solid #000;
+    font-size: 12px;
+}
+
+#lapInfoTable th {
+    background-color: rgba(0, 128, 0, 0.8);
+    font-weight: bold;
+}
+

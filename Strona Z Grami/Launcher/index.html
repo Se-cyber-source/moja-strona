@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Moje-Stworzone-Gry</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- PANEL BOCZNY Lewy -->
+<div class="sidebar">
+  <h2>Kategorie Gier</h2>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadAllItems('games')">
+      <span class="sidebar-text">Wszystkie gry</span>
+      <img src="../Launcher/pic/Icon/1.png" alt="Ikona" class="my-icon" />
+    </div>
+  </div>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadGames('games', 'html')">
+      <span class="sidebar-text">Gry HTML</span>
+      <img src="../Launcher/pic/Icon/2.png" alt="Ikona" class="my-icon" />
+    </div>
+  </div>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadGames('games', 'python')">
+      <span class="sidebar-text">Gry Python</span>
+      <img src="../Launcher/pic/Icon/3.png" alt="Ikona" class="my-icon" />
+    </div>
+  </div>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadGames('games', 'node')">
+      <span class="sidebar-text">Gry Node.js</span>
+      <img src="../Launcher/pic/Icon/4.png" alt="Ikona" class="my-icon" />
+    </div>
+  </div>
+</div>
+<!-- PANEL BOCZNY Prawy -->
+<div class="sidebar-2">
+  <h2>Kategorie Programów</h2>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadAllItems('programs')">
+      <img src="../Launcher/pic/Icon/5.png" alt="Ikona" class="my-icon" />
+      <span class="sidebar-text">Wszystkie Programy</span>
+    </div>
+  </div>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadGames('programs', 'html')">
+      <img src="../Launcher/pic/Icon/6.png" alt="Ikona" class="my-icon" />
+      <span class="sidebar-text">Programy HTML</span>
+    </div>
+  </div>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadGames('programs', 'python')">
+      <img src="../Launcher/pic/Icon/7.png" alt="Ikona" class="my-icon" />
+      <span class="sidebar-text">Programy Python</span>
+    </div>
+  </div>
+
+  <div class="category-wrapper">
+    <div class="category" onclick="loadGames('programs', 'node')">
+      <img src="../Launcher/pic/Icon/8.png" alt="Ikona" class="my-icon" />
+      <span class="sidebar-text">Programy Node.js</span>
+    </div>
+  </div>
+</div>
+    <!-- BANER Z NAZWĄ STRONY -->
+  <div class="banner">
+    <h1>Seba Gaming – Tu zaczyna się prawdziwa zabawa!</h1>
+  </div>
+
+  <!-- GŁÓWNA ZAWARTOŚĆ -->
+  <div class="main-content" id="main-content">
+  <h1>Wybierz kategorię</h1>
+  <div class="category-buttons">
+    <button onclick="loadAllItems('games')">Gry</button>
+    <button onclick="loadAllItems('programs')">Programy</button>
+  </div>
+</div>
+  
+<div id="gameModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <div class="game-wrapper">
+      <iframe id="gameFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div id="fpsCounter" style="
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #0f0;
+    background: rgba(0, 0, 0, 0.7);
+    font-family: monospace;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 10000;
+    user-select: none;
+    pointer-events: none;
+  ">FPS: --</div>
+</div>
+
+
+  <!-- SKRYPT -->
+  <script>
+    let statusInterval;
+    const content = {
+    games: {
+    html: [
+      {
+        title: "Symulator Wyścigów",
+        img: "../Launcher/pic/SW1.png",
+        url: "../Gry/Symulator_Wyścigów/Gra.html"
+      },
+      {
+        title: "Gra HTML 2",
+        img: "https://via.placeholder.com/200x100?text=Gra+HTML+2",
+        url: "../gry/gra-html2/index.html"
+      },
+	  {
+        title: "Gra HTML 3",
+        img: "https://via.placeholder.com/200x100?text=Gra+HTML+2",
+        url: "../gry/gra-html2/index.html"
+      },
+	  {
+        title: "Gra HTML 4",
+        img: "https://via.placeholder.com/200x100?text=Gra+HTML+2",
+        url: "../gry/gra-html2/index.html"
+      },
+	  	  {
+        title: "Gra HTML 4",
+        img: "https://via.placeholder.com/200x100?text=Gra+HTML+2",
+        url: "../gry/gra-html2/index.html"
+      }
+    ],
+    python: [
+      {
+        title: "Gra Python 1 (Flask)",
+        img: "https://via.placeholder.com/200x100?text=Python+Gra",
+        url: "http://localhost:5000"
+      }
+    ],
+    node: [
+      {
+        title: "Strzelanka-Online",
+        img: "../Launcher/pic/SO1.png",
+        url: "http://localhost:3000"
+      }
+    ]
+  },
+  programs: {
+    html: [
+      {
+        title: "Edytor HTML",
+        img: "https://via.placeholder.com/200x100?text=HTML+Program",
+        url: "../programy/edytor-html/index.html"
+      }
+    ],
+    python: [
+      {
+        title: "Program Python",
+        img: "https://via.placeholder.com/200x100?text=Python+Program",
+        url: "http://localhost:5001"
+      }
+    ],
+    node: [
+      {
+        title: "Program Node.js",
+        img: "https://via.placeholder.com/200x100?text=Node+Program",
+        url: "http://localhost:3001"
+      }
+    ]
+  }
+};
+	
+function filterGames() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const cards = document.querySelectorAll(".game-card");
+  let anyVisible = false;
+
+  cards.forEach(card => {
+    const title = card.querySelector(".game-title").textContent.toLowerCase();
+    const match = title.includes(input);
+    card.style.display = match ? "inline-block" : "none";
+    if (match) anyVisible = true;
+  });
+
+  const noResults = document.getElementById("no-results");
+  if (!anyVisible) {
+    if (!noResults) {
+      const p = document.createElement("p");
+      p.id = "no-results";
+      p.textContent = "Brak wyników.";
+      document.getElementById("main-content").appendChild(p);
+    }
+  } else {
+    if (noResults) noResults.remove();
+  }
+}
+
+function loadGames(type, category) {
+  document.querySelectorAll('.category').forEach(cat => cat.classList.remove('active'));
+  const selectedCategories = document.querySelectorAll(`.category[onclick="loadGames('${type}', '${category}')"]`);
+  selectedCategories.forEach(cat => cat.classList.add('active'));
+
+  const contentDiv = document.getElementById('main-content');
+  contentDiv.innerHTML = '';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = `Szukaj ${type === 'games' ? 'gry' : 'programu'}...`;
+  input.id = 'searchInput';
+  input.className = 'searchInput';
+  input.setAttribute('oninput', 'filterGames()');
+  contentDiv.appendChild(input);
+
+  const grid = document.createElement('div');
+  grid.className = 'game-grid';
+  contentDiv.appendChild(grid);
+
+  if (!content[type] || !content[type][category]) {
+    grid.innerHTML = `<p>Brak ${type === 'games' ? 'gier' : 'programów'} w tej kategorii.</p>`;
+    return;
+  }
+
+  content[type][category].forEach(item => {
+    const card = document.createElement('a');
+    card.className = 'game-card';
+    if (category === 'python' || category === 'node') {
+      card.classList.add('disabled');
+      card.style.pointerEvents = 'none';
+    }
+    card.href = '#';
+    card.innerHTML = `
+      <img src="${item.img}" alt="${item.title}">
+      <div class="game-title">
+        ${item.title}
+        ${(category === 'python' || category === 'node') ? `<span class="status-light status-offline" data-url="${item.url}"></span>` : ''}
+      </div>
+    `;
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      if (!card.classList.contains('disabled')) {
+        openGameModal(item.url);
+      }
+    });
+    grid.appendChild(card);
+  });
+
+  setTimeout(checkServerStatus, 100);
+  if (statusInterval) clearInterval(statusInterval);
+  statusInterval = setInterval(checkServerStatus, 20000);
+}
+
+function loadAllItems(type) {
+  document.querySelectorAll('.category').forEach(cat => cat.classList.remove('active'));
+  const selectedCategories = document.querySelectorAll(`.category[onclick="loadAllItems('${type}')"]`);
+  selectedCategories.forEach(cat => cat.classList.add('active'));
+
+  const contentDiv = document.getElementById('main-content');
+  contentDiv.innerHTML = '';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = `Szukaj ${type === 'games' ? 'gier' : 'programów'}...`;
+  input.id = 'searchInput';
+  input.className = 'searchInput';
+  input.setAttribute('oninput', 'filterGames()');
+  contentDiv.appendChild(input);
+
+  const grid = document.createElement('div');
+  grid.className = 'game-grid';
+  contentDiv.appendChild(grid);
+
+  if (!content[type]) {
+    grid.innerHTML = `<p>Brak ${type === 'games' ? 'gier' : 'programów'}.</p>`;
+    return;
+  }
+
+  Object.keys(content[type]).forEach(category => {
+    content[type][category].forEach(item => {
+      const card = document.createElement('a');
+      card.className = 'game-card';
+      if (category === 'python' || category === 'node') {
+        card.classList.add('disabled');
+        card.style.pointerEvents = 'none';
+      }
+      card.href = '#';
+      card.innerHTML = `
+        <img src="${item.img}" alt="${item.title}">
+        <div class="game-title">
+          ${item.title}
+          ${(category === 'python' || category === 'node') ? `<span class="status-light status-offline" data-url="${item.url}"></span>` : ''}
+        </div>
+      `;
+      card.addEventListener('click', e => {
+        e.preventDefault();
+        if (!card.classList.contains('disabled')) {
+          openGameModal(item.url);
+        }
+      });
+      grid.appendChild(card);
+    });
+  });
+
+  setTimeout(checkServerStatus, 100);
+  if (statusInterval) clearInterval(statusInterval);
+  statusInterval = setInterval(checkServerStatus, 20000);
+}
+
+function checkServerStatus() {
+  const lights = document.querySelectorAll('.status-light');
+  lights.forEach(light => {
+    const url = light.getAttribute('data-url');
+	const card = light.closest('.game-card'); 
+	 
+    fetch(url, { method: 'HEAD' })
+      .then(() => {
+        light.classList.remove('status-offline');
+        light.classList.add('status-online');
+		
+		if (card) {
+          card.classList.remove('disabled');
+          card.style.pointerEvents = 'auto';
+        }
+      })
+      .catch(() => {
+        light.classList.remove('status-online');
+        light.classList.add('status-offline');
+		
+		if (card) {
+          card.classList.add('disabled');
+          card.style.pointerEvents = 'none';
+        }	 
+      });
+  });
+}
+const fpsCounter = document.getElementById('fpsCounter');
+
+let lastFrameTime = performance.now();
+let frames = 0;
+
+function updateFPS() {
+  const now = performance.now();
+  frames++;
+  if (now - lastFrameTime >= 1000) { // co sekundę
+    fpsCounter.textContent = `FPS: ${frames}`;
+    frames = 0;
+    lastFrameTime = now;
+  }
+  requestAnimationFrame(updateFPS);
+}
+
+function openGameModal(url) {
+    const modal = document.getElementById('gameModal');
+    const iframe = document.getElementById('gameFrame');
+    iframe.src = url;
+    modal.style.display = 'flex'; 
+  if (!window.fpsUpdating) {
+    window.fpsUpdating = true;
+    updateFPS();
+  }
+}
+
+function closeGameModal() {
+    const modal = document.getElementById('gameModal');
+    const iframe = document.getElementById('gameFrame');
+    iframe.src = '';
+    modal.style.display = 'none';
+  fpsCounter.textContent = 'FPS: --';
+  window.fpsUpdating = false;
+}
+
+document.getElementById('closeModal').addEventListener('click', closeGameModal);
+
+document.getElementById('gameModal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeGameModal();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.banner');
+  const bannerH1 = banner.querySelector('h1');
+  const text = bannerH1.textContent;
+  bannerH1.textContent = '';
+
+  for (let i = 0; i < text.length; i++) {
+    const span = document.createElement('span');
+    span.textContent = text[i];
+    span.style.setProperty('--i', i);
+    bannerH1.appendChild(span);
+  }
+});
+  </script>
+
+</body>
+</html>
