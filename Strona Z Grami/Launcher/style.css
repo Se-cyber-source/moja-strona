@@ -460,6 +460,56 @@ body {
   box-shadow: 0 0 0 3px rgba(69, 141, 255, 0.7);
 }
 
+@media (max-width: 768px) {
+  .banner {
+    font-size: 8px;
+    padding: 10px 20px;
+  }
+
+  .sidebar, .sidebar-2 {
+    width: 160px;
+    transform: translateX(-90%); /* schować bardziej */
+  }
+
+  .sidebar:hover, .sidebar-2:hover {
+    padding: 15px 5px;
+  }
+
+  .game-card {
+    width: 90vw; /* dopasuj do szerokości ekranu */
+    margin: 10px 0;
+  }
+
+  .searchInput {
+    width: 80vw;
+    font-size: 14px;
+  }
+
+  .category-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .category-buttons button {
+    width: 80vw;
+    font-size: 16px;
+  }
+
+  .modal-content {
+    width: 95vw;
+    height: 60vh;
+  }
+
+  #gameFrame {
+    aspect-ratio: auto; /* wyłącz proporcje na małych ekranach */
+    height: 100%;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+}
+
 	
 
 	
